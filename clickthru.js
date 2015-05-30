@@ -59,7 +59,7 @@
     addListener: addListener,
     removeListener: removeListener
   };
-  
+
   window.addEventListener('load', function() {
     if (!isListening && listeners.length > 0) {
       startListening();
