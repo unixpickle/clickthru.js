@@ -6,21 +6,29 @@
 
 First, include clickthru.js:
 
-    <script src="clickthru.js"></script>
+```html
+<script src="clickthru.js"></script>
+```
 
 Now, declare a handler in whatever way you want:
 
-    function myHandler(e) {
-      console.log('the user clicked the page');
-    }
+```javascript
+function myHandler(e) {
+  console.log('the user clicked the page');
+}
+```
 
 Finally, register it:
 
-    window.clickthru.addListener(myHandler);
+```javascript
+window.clickthru.addListener(myHandler);
+```
 
 You can deregister your listener like this:
 
-    window.clickthur.removeListener(myHandler);
+```javascript
+window.clickthru.removeListener(myHandler);
+```
 
 # The ClickThruEvent object
 
