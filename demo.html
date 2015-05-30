@@ -1,0 +1,17 @@
+<!doctype html>
+<html style="width: 100%; height: 100%; margin: 0; padding: 0">
+  <head>
+    <title>Clickthru</title>
+    <script src="clickthru.js"></script>
+    <script type="text/javascript">
+    function handler(e) {
+      console.log(e.inElement(document.getElementById('box')));
+    }
+    window.clickthru.addListener(handler);
+    </script>
+  </head>
+  <body style="width: 100%; height: 100%; margin: 0; padding: 0">
+    <div style="position: absolute; top: 100px; left: 100px; width: 100px; height: 100px; background-color: #777777" id="box">
+    </div>
+  </body>
+</html>

@@ -2,6 +2,7 @@
 (function() {
 
   var listeners = [];
+  var isListening = false;
 
   function ClickThruEvent(event) {
     this.event = event;
@@ -23,12 +24,8 @@
     }
   }
 
-  function isListening() {
-    return listeners.length > 0;
-  }
-
   function addListener(listener) {
-    if (!isListening()) {
+    if (listeners.length === 0) {
       startListening();
     }
     listeners.push(listener);
@@ -38,23 +35,35 @@
     var index = listeners.indexOf(listener);
     if (index >= 0) {
       listeners.splice(index, 1);
-    }
-    if (!isListening()) {
-      stopListening();
+      if (listeners.length === 0) {
+        stopListening();
+      }
     }
   }
 
   function startListening() {
-    document.body.addEventListener('mousedown', callback, true);
+    if (document.body) {
+      document.body.addEventListener('mousedown', callback, true);
+      isListening = true;
+    }
   }
 
   function stopListening() {
-    document.body.removeEventListener('mousedown', callback, true);
+    if (document.body) {
+      document.body.removeEventListener('mousedown', callback, true);
+      isListening = false;
+    }
   }
 
   window.clickthru = {
     addListener: addListener,
     removeListener: removeListener
   };
+  
+  window.addEventListener('load', function() {
+    if (!isListening && listeners.length > 0) {
+      startListening();
+    }
+  });
 
 })();
