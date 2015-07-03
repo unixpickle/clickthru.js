@@ -38,9 +38,10 @@ ClickThruEvent objects have one static property:
 
  * **event** - the raw DOM event which triggered this callback
 
-In addition, every instance of ClickThruEvent has a helper function:
+In addition, every instance of ClickThruEvent has the following functions:
 
  * **inElement**(e) - provide a DOM element and get a boolean indicating whether or not the user clicked within that element. This can be used to hide a context menu unless the user clicks within it.
+ * **stopClickThruPropagation**() - prevent the click thru event from being propagated to listeners which were added earlier. This can be used so that nested elements can be clicked away before parent elements.
 
 # License
 
